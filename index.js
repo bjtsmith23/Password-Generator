@@ -1,29 +1,28 @@
-
-var generatePasswordIDBtn = document.getElementById("generate");
 var generatePasswordIDBtn = document.querySelector("#generate");
 
-var arrayPool = "!@#$%^&*(_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456";
+var generatePassword = function() {
 
-var specialCharStr = "!@#$%^&*(_";
-var upperCaseLetterStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var loweCaseLetterStr = "abcdefghijklmnopqrstuvwxyz";
-var numberStr = "0123456789";
+  var arrayPool = "!@#$%^&*(_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456";
 
-var specialCharArr = specialCharStr.split("");
-var upperCaseLetterArr = upperCaseLetterStr.split("");
-var lowerCaseArr = loweCaseLetterStr.split("");
-var numberArr = numberStr.split("");
+  var specialCharStr = "!@#$%^&*(_";
+  var upperCaseLetterStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var loweCaseLetterStr = "abcdefghijklmnopqrstuvwxyz";
+  var numberStr = "0123456789";
 
-var specialCharArr = "!@#$%^&*(_".split("");
+  var specialCharArr = specialCharStr.split("");
+  var upperCaseLetterArr = upperCaseLetterStr.split("");
+  var lowerCaseArr = loweCaseLetterStr.split("");
+  var numberArr = numberStr.split("");
+
+  var specialCharArr = "!@#$%^&*(_".split("");
   console.log(specialCharArr);
 
-
-  var aPassword= [];
+  var aPassword = [];
 
   var userChoiceLength = prompt("Enter password length: ");
   console.log(userChoiceLength);
 
-  var userChoiceSpecialChars= confirm("Special Characters?");
+  var userChoiceSpecialChars = confirm("Special Characters?");
   console.log(userChoiceSpecialChars);
 
   var userChoiceUpperCase = confirm("Upper Case?");
@@ -48,7 +47,7 @@ var specialCharArr = "!@#$%^&*(_".split("");
 
   if (userChoiceSpecialChars) {
     copyArrayPool(specialCharArr);
-    }
+  }
 
   if (userChoiceUpperCase) {
     userCharPool = userCharPool.concat(upperCaseLetterArr);
@@ -64,7 +63,8 @@ var specialCharArr = "!@#$%^&*(_".split("");
     console.log(userCharPool);
   }
 
-  for (var i = 0; i <userChoiceLength ; i++) {
+
+  for (var i = 0; i < userChoiceLength; i++) {
     var index = Math.floor(Math.random() * userCharPool.length);
 
     console.log(userCharPool[index]);
@@ -75,16 +75,27 @@ var specialCharArr = "!@#$%^&*(_".split("");
 
   console.log(aPassword.join(""));
 
-  function writePassword() {
-    var aPassword = generatePasswordIDBtn();
-    var passwordTextEl = document.getElementById("password");
+  var gPassword = aPassword.join("");
 
-    passwordTextEl.value = password;
-    generatePasswordIDBtn.addEventListener("click", writePassword);
+  return gPassword;
+}
 
-    return;
-  }
 
+
+
+function writePassword() {
+  var password = generatePassword();
+  var passwordTextEl = document.getElementById("password");
+
+  passwordTextEl.value = password;
+
+
+  return;
+}
+
+
+
+generatePasswordIDBtn.addEventListener("click", writePassword);
 
 
 
