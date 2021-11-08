@@ -22,6 +22,13 @@ var generatePassword = function() {
   var userChoiceLength = prompt("Enter password length: ");
   console.log(userChoiceLength);
 
+  if (userChoiceLength < 8 || userChoiceLength > 128) {
+    alert("Password length must contain 8-128 charaters");
+    return generatePassword();
+  }
+
+
+
   var userChoiceSpecialChars = confirm("Special Characters?");
   console.log(userChoiceSpecialChars);
 
@@ -33,6 +40,12 @@ var generatePassword = function() {
 
   var userChoiceNumber = confirm("Numbers?");
   console.log(userChoiceNumber);
+
+  if (!userChoiceSpecialChars && !userChoiceUpperCase && !userChoiceLowerCase && !userChoiceNumber) {
+    alert("Please pick one of the character sets!");
+    return generatePassword();
+  } 
+
 
   // create a pool of character sets of user choices
   var userCharPool = [];
